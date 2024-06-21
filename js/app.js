@@ -84,6 +84,7 @@ const winningCombos = [
 
 /*---------------------------- Variables (state) ----------------------------*/
 
+
 function init () {
     board = [
         '', '', '', 
@@ -103,6 +104,8 @@ const messageEl = document.getElementById('message');
 const resetBtnEl = document.getElementById('reset')
 
 /*-------------------------------- Functions --------------------------------*/
+
+init()
 
 function render () {
     updateBoard();
@@ -172,6 +175,9 @@ function switchPlayerTurn () {
 
 function handleClick (event) {
     const squareIndex = event.target.id;
+    if (board [squareIndex] === 'X' || board[squareIndex] === 'O') {
+        return;
+    };
     placePiece(squareIndex);
     checkForWinner();
     checkForTie();
@@ -183,10 +189,10 @@ function handleClick (event) {
 /*----------------------------- Event Listeners -----------------------------*/
 
 squareEls.forEach((square) => {
-    square.addEventListener('click', handleClick);
+    {square.addEventListener('click', handleClick);}
 });
 
 resetBtnEl.addEventListener('click', init)
 
 
-init()
+
